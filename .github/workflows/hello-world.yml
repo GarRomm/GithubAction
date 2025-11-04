@@ -40,4 +40,13 @@ jobs:
       run: |
         echo "La clé API est configurée"
         echo "Valeur de la clé API: $API_KEY"
+    
+    - name: Génération du fichier de rapport
+      run: echo "Rapport d'analyse" > report.txt
+    
+    - name: Téléchargement de l'artéfact
+      uses: actions/upload-artifact@v4
+      with:
+        name: rapport-analyse
+        path: report.txt
         
