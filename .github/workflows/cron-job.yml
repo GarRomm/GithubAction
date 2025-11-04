@@ -1,0 +1,21 @@
+name: Workflow Programmable (Cron Job)
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Tous les jours à 8h00 UTC
+  workflow_dispatch:  # Permet de déclencher manuellement le workflow
+
+jobs:
+  daily-task:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Récupération du code
+      uses: actions/checkout@v4
+      
+    - name: Message quotidien
+      run: |
+        echo "🌅 Bonjour! Il est 8h00 UTC"
+        echo "📅 Date du jour: $(date)"
+        echo "✅ Tâche quotidienne exécutée avec succès!"
+        echo "🔄 Ce workflow s'exécute automatiquement tous les jours à 8h00"
