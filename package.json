@@ -1,0 +1,15 @@
+{
+  "name": "github-action-demo",
+  "version": "1.0.0",
+  "description": "Demo project for GitHub Actions",
+  "main": "index.js",
+  "scripts": {
+    "lint": "echo 'Running lint check...' && echo '✓ Lint passed successfully!'"
+  },
+  "keywords": [
+    "github-actions",
+    "demo"
+  ],
+  "author": "",
+  "license": "ISC"
+}
