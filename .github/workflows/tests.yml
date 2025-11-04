@@ -1,0 +1,29 @@
+name: Tests Unitaires Automatisés
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Récupération du code
+      uses: actions/checkout@v4
+      
+    - name: Installation de Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+      
+    - name: Installation des dépendances
+      run: npm install
+      
+    - name: Exécution des tests unitaires
+      run: npm test
+      
+    - name: Affichage du résultat des tests
+      run: echo "✅ Les tests unitaires ont été exécutés avec succès!"
