@@ -26,15 +26,6 @@ jobs:
       run: |
         echo "🔨 Compilation en cours..."
         echo "✅ Compilation réussie!"
-        
-    - name: Sauvegarde des fichiers compilés
-      run: echo "build-output" > build.txt
-      
-    - name: Téléchargement de l'artéfact de build
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-artifacts
-        path: build.txt
   
   test:
     runs-on: ubuntu-latest
@@ -48,16 +39,6 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-      
-    - name: Téléchargement de l'artéfact de build
-      uses: actions/download-artifact@v4
-      with:
-        name: build-artifacts
-    
-    - name: Vérification de l'artéfact
-      run: |
-        echo "📦 Contenu de l'artéfact:"
-        cat build.txt
     
     - name: Exécution des tests
       run: |
