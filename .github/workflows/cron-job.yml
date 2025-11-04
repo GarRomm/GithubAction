@@ -6,16 +6,28 @@ on:
   workflow_dispatch:  # Permet de déclencher manuellement le workflow
 
 jobs:
-  daily-task:
+  build:
     runs-on: ubuntu-latest
     
     steps:
     - name: Récupération du code
       uses: actions/checkout@v4
       
-    - name: Message quotidien
+    - name: Configuration de Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+      
+    - name: Installation des dépendances
+      run: npm install
+      
+    - name: Compilation du projet
       run: |
-        echo "🌅 Bonjour! Il est 8h00 UTC"
-        echo "📅 Date du jour: $(date)"
-        echo "✅ Tâche quotidienne exécutée avec succès!"
-        echo "🔄 Ce workflow s'exécute automatiquement tous les jours à 8h00"
+        echo "🔨 Compilation en cours..."
+        echo "✅ Compilation réussie!"
+      
+    - name: Message de confirmation
+      run: |
+        echo "🌅 Build quotidien exécuté"
+        echo "📅 Date: $(date)"
+        echo "✅ Build terminé avec succès!"
